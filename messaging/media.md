@@ -11,7 +11,13 @@ Send one or more photos.
 
 {% code title="Signature" %}
 ```python
-bot.photo(target, photos, caption: str = None, inline=None, keyboard=None, **kwargs)
+bot.photo(
+        target, 
+        photos, 
+        caption: str = None, 
+        inline=None, 
+        keyboard=None, 
+        **kwargs )
 ```
 {% endcode %}
 
@@ -24,20 +30,7 @@ bot.photo(msg, "https://...", caption="Nice view!")
 
 {% code title="Multiple photos (media group)" %}
 ```python
-bot.photo(msg, [
-    "https://example.com/1.jpg",
-    "https://example.com/2.jpg",
-])
-# First photo gets the caption
-```
-{% endcode %}
-
-{% code title="Mixed media group" %}
-```python
-bot.photo(msg, [
-    {"file": "https://.../photo.jpg", "type": "photo"},
-    {"file": "https://.../video.mp4", "type": "video", "caption": "Video!"},
-])
+bot.photo(chat_id, photos=["url1", "url2", "url3"], caption="Album")
 ```
 {% endcode %}
 
