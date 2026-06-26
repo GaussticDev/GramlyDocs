@@ -11,7 +11,7 @@ Send one or more photos.
 
 {% code title="Signature" %}
 ```python
-bot.photo(target, photos, caption: str = None, inline=None, keyboard=None, **kwargs )
+bot.photo(target, photo, caption: str = None, inline=None, keyboard=None, **kwargs )
 ```
 {% endcode %}
 
@@ -21,7 +21,7 @@ bot.photo(msg, "https://example.com/image.jpg")
 
 bot.photo(msg, "https://...", caption="Nice view!")
 
-bot.photo(msg, "AgACAgIAAxk...", caption="Select",
+bot.photo(msg, photo="AgACAgIAAxk...", caption="Select",
     inline=[[btn("Yes", "act:yes"), btn("No", "act:no")]])
 ```
 {% endcode %}
