@@ -11,26 +11,25 @@ Send one or more photos.
 
 {% code title="Signature" %}
 ```python
-bot.photo(
-        target, 
-        photos, 
-        caption: str = None, 
-        inline=None, 
-        keyboard=None, 
-        **kwargs )
+bot.photo(target, photos, caption: str = None, inline=None, keyboard=None, **kwargs )
 ```
 {% endcode %}
 
 {% code title="Single photo" %}
 ```python
 bot.photo(msg, "https://example.com/image.jpg")
+
 bot.photo(msg, "https://...", caption="Nice view!")
+
+bot.photo(msg, "AgACAgIAAxk...", caption="Select",
+    inline=[[btn("Yes", "act:yes"), btn("No", "act:no")]])
 ```
 {% endcode %}
 
 {% code title="Multiple photos (media group)" %}
 ```python
-bot.photo(chat_id, photos=["url1", "url2", "url3"], caption="Album")
+bot.photo(msg, ["file_id_1", "file_id_2", "file_id_3"])
+bot.photo(msg, photos=["url1", "url2", "url3"], caption="Album")
 ```
 {% endcode %}
 
@@ -46,23 +45,16 @@ bot.media(target, items, caption: str = None, **kwargs)
 
 {% code title="Mixed album with URLs" %}
 ```python
-bot.media(msg, [
-    {"file": "https://.../photo.jpg", "type": "photo"},
-    {"file": "https://.../video.mp4", "type": "video"},
-    {"file": "https://.../doc.pdf", "type": "document"},
-], caption="Album caption (first item only)")
-```
-{% endcode %}
-
-{% code title="Mixed album with bytes" %}
-```python
-with open("photo.jpg", "rb") as f:
-    photo_bytes = f.read()
+bot.media(msg, "file_id")
+bot.media(msg, "/tmp/video.mp4")
+bot.media(msg, "/tmp/report.pdf")
+bot.media(msg, "/tmp/report.pdf", caption="File: pdf")
 
 bot.media(msg, [
-    {"type": "photo", "media": photo_bytes},
-    {"type": "video", "file": "https://.../video.mp4"},
-])
+    "/tmp/photo.jpg",
+    "/tmp/photo2.png",
+    "/tmp/clip.mp4",
+], caption="Album")  
 ```
 {% endcode %}
 
